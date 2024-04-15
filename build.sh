@@ -7,6 +7,7 @@ set -e
 export PROJECTFOLDER="/crave-devspaces/Lineage20"
 export PROJECTID="36"
 export REPO_INIT="repo init -u https://github.com/accupara/los20.git -b lineage-20.0 --git-lfs --depth=1"
+export BUILD_DIFFERENT_ROM="$REPO_INIT" # Change this if you'd like to build something else
 if grep -q "$PROJECTFOLDER" <(crave clone list --json | jq -r '.clones[]."Cloned At"') && [ "${DCDEVSPACE}" == "1" ]; then
    crave clone destroy -y $PROJECTFOLDER || echo "Error removing $PROJECTFOLDER"
 else
@@ -24,6 +25,9 @@ fi
 # Run inside foss.crave.io devspace
 # Remove existing local_manifests
 crave run --no-patch -- "rm -rf .repo/local_manifests && \
+
+# Init Manifest
+$BUILD_DIFFERENT_ROM && \
 
 # Clone local_manifests repository
 git clone https://github.com/sounddrill31/local_manifests --depth 1 -b lineage-oxygen .repo/local_manifests && \
