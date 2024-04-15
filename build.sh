@@ -3,17 +3,19 @@
 set -e
 #Credit to Meghthedev for the initial script 
 
-# Initialize repo with specified manifest
 export PROJECTFOLDER="/crave-devspaces/Lineage20"
 export PROJECTID="36"
 export REPO_INIT="repo init -u https://github.com/accupara/los20.git -b lineage-20.0 --git-lfs --depth=1"
 export BUILD_DIFFERENT_ROM="$REPO_INIT" # Change this if you'd like to build something else
+
+# Destroy Old Clones
 if grep -q "$PROJECTFOLDER" <(crave clone list --json | jq -r '.clones[]."Cloned At"') && [ "${DCDEVSPACE}" == "1" ]; then
    crave clone destroy -y $PROJECTFOLDER || echo "Error removing $PROJECTFOLDER"
 else
    rm -rf $PROJECTFOLDER || true
 fi
 
+# Create New clone
 if [ "${DCDEVSPACE}" == "1" ]; then
    crave clone create --projectID $PROJECTID $PROJECTFOLDER || echo "Crave clone create failed!"
 else
