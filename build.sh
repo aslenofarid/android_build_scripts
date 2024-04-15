@@ -17,10 +17,6 @@ if [ "${DCDEVSPACE}" == "1" ]; then
    crave clone create --projectID $PROJECTID $PROJECTFOLDER || echo "Crave clone create failed!"
 else
    mkdir $PROJECTFOLDER
-fi
-if grep -q "$PROJECTFOLDER" <(crave clone list --json | jq -r '.clones[]."Cloned At"') && [ "${DCDEVSPACE}" == "1" ]; then
-   echo "Using Crave Clone... skipping"
-else
    echo "Running $REPO_INIT"
    $REPO_INIT
 fi
