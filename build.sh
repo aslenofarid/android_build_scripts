@@ -9,7 +9,8 @@ export REPO_INIT="repo init -u https://github.com/accupara/los20.git -b lineage-
 export BUILD_DIFFERENT_ROM="$REPO_INIT" # Change this if you'd like to build something else
 
 # Destroy Old Clones
-if grep -q "$PROJECTFOLDER" <(crave clone list --json | jq -r '.clones[]."Cloned At"') && [ "${DCDEVSPACE}" == "1" ]; then   crave clone destroy -y $PROJECTFOLDER || echo "Error removing $PROJECTFOLDER"
+if grep -q "$PROJECTFOLDER" <(crave clone list --json | jq -r '.clones[]."Cloned At"') && [ "${DCDEVSPACE}" == "1" ]; then   
+   crave clone destroy -y $PROJECTFOLDER || echo "Error removing $PROJECTFOLDER"
 else
    rm -rf $PROJECTFOLDER || true
 fi
