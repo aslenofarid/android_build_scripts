@@ -3,9 +3,9 @@
 set -e
 #Credit to Meghthedev for the initial script 
 
-export PROJECTFOLDER="Lineage20"
-export PROJECTID="36"
-export REPO_INIT="repo init -u https://github.com/accupara/los20.git -b lineage-20.0 --git-lfs --depth=1"
+export PROJECTFOLDER="Lineage-17.1"
+export PROJECTID="85"
+export REPO_INIT="repo init -u https://github.com/LineageOS/android.git -b lineage-17.1"
 export BUILD_DIFFERENT_ROM="$REPO_INIT" # Change this if you'd like to build something else
 
 # Destroy Old Clones
@@ -34,7 +34,7 @@ crave run --no-patch -- "rm -rf .repo/local_manifests && \
 $BUILD_DIFFERENT_ROM && \
 
 # Clone local_manifests repository
-git clone https://github.com/sounddrill31/local_manifests --depth 1 -b lineage-oxygen .repo/local_manifests && \
+git clone https://github.com/aslenofarid/local_manifest.git --depth 1 -b lineage-17.1 .repo/local_manifests && \
 
  # Sync the repositories
  /opt/crave/resync.sh && \ 
@@ -43,7 +43,7 @@ git clone https://github.com/sounddrill31/local_manifests --depth 1 -b lineage-o
 source build/envsetup.sh && \
 
 # Lunch configuration
-lunch lineage_oxygen-userdebug && \
+lunch lineage_X00TD-user && \
 
 # Build the ROM
 mka bacon"
