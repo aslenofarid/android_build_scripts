@@ -36,8 +36,8 @@ $BUILD_DIFFERENT_ROM && \
 # Clone local_manifests repository
 git clone https://github.com/aslenofarid/local_manifest.git --depth 1 -b lineage-17.1 .repo/local_manifests && \
 
- # Sync the repositories
- /opt/crave/resync.sh && \ 
+# Sync the repositories
+/opt/crave/resync.sh && \ 
 
 # Set up build environment
 source build/envsetup.sh && \
@@ -45,8 +45,12 @@ source build/envsetup.sh && \
 # Lunch configuration
 lunch lineage_X00TD-user && \
 
+# export
+export BUILD_USERNAME=aslenofarid
+export TZ=Asia/Jakarta
+
 # Build the ROM
-mka bacon"
+brunch X00TD"
 
 cd ..
 
