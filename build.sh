@@ -55,10 +55,10 @@ mka bacon"
 cd ..
 
 # Clean up
-if grep -q "$PROJECTFOLDER" <(crave clone list --json | jq -r '.clones[]."Cloned At"') || [ "${DCDEVSPACE}" == "1" ]; then
-  crave clone destroy -y /crave-devspaces/$PROJECTFOLDER || echo "Error removing $PROJECTFOLDER"
-else  
-  rm -rf $PROJECTFOLDER || true
-fi
+# if grep -q "$PROJECTFOLDER" <(crave clone list --json | jq -r '.clones[]."Cloned At"') || [ "${DCDEVSPACE}" == "1" ]; then
+#  crave clone destroy -y /crave-devspaces/$PROJECTFOLDER || echo "Error removing $PROJECTFOLDER"
+# else  
+#   rm -rf $PROJECTFOLDER || true
+# fi
 # Upload zips to Telegram
 /opt/crave/telegram/upload.sh
