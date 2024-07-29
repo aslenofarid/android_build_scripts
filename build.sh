@@ -50,7 +50,7 @@ export BUILD_USERNAME=aslenofarid
 export TZ=Asia/Jakarta
 
 # Build the ROM
-brunch X00TD"
+mka bacon"
 
 cd ..
 
